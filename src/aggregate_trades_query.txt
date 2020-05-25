@@ -1,0 +1,1 @@
+create continuous query "trades_aggregated_1s" on trades begin select last(price) as price, sum(quantity) as quantity, sum(quantity_signed) as quantity_signed, sum(value) as value into trades_aggregated_1s   from trades_aggregated   group by time(1s), exchange, label, sessionId, side end
